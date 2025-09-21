@@ -5,7 +5,7 @@
 1. Install Python (>=3.9 recommended).
 
 2. Install dependencies:
- - pip install vrplib
+   pip install vrplib
 
 
 ## Data / Source
