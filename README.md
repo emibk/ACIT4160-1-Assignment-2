@@ -4,11 +4,93 @@
 
 1. Install Python (>=3.9 recommended).
 
-2. Install dependencies:
-   pip install vrplib
-
+2. Libraries Used:
+   - vrplib
+   - matplotlib
+   - numpy
+   - random
+   - scipy
+   - copy
+   - time
 
 ## Data / Source
-This repository includes CVRPLIB instances from: https://vrp.atd-lab.inf.puc-rio.br/index.php/en/links.
+This repository includes CVRPLIB instances from: https://vrp.atd-lab.inf.puc-rio.br/index.php/en/links
 
 The instance files are stored in the data/ folder.
+
+This repository includes the following CVRPLIB instances:
+- "A-n32-k5.vrp": 32 customers, 5 vehicles - Small Instance
+- "A-n37-k5.vrp": 37 customers, 5 vehicles - Small Instance
+- "B-n78-k10.vrp": 78 customers, 10 vehicles - Medium Instance
+- "B-n63-k10.vrp": 63 customers, 10 vehicles - Medium Instance
+- "X-n101-k25.vrp":101 customers, 25 vehicles - Large Instance
+- "X-n148-k46.vrp": 148 customers, 46 vehicles - Large Instance
+
+# Project Overview 
+This project implements solutions for the Capacitated Vehicle Routing Problem (CVRP) using Python. 
+
+Objectives:
+- Minimize total travel distance across all vehicles.
+- Minimize the standard deviation of route lengths to balance the workload among vehicles.
+
+Individual Representation:
+- Each individual is represented as a list: [route, vehicles assigned]
+- Route: A permutation of customer locations (indices)
+- Vehicles Assigned: Integer list, of the same length as "route". The element at index "i" specifies which vehicle is assigned to the customer at "route[i]"
+
+Genetic Operators: Crossover & Mutation
+Crossover: Combines two individual parents to produce offspring (Route Crossover and Vehicles Crossover)
+- Route Crossover: Partially Mapped Crossover and
+- Vehicles Crossover: Uniform Crossover
+Mutation: Introduces random variation within an individual (Route Mutation or Vehicles Mutation)
+- Route Mutation: Scramble Mutation 
+- Vehicles Mutation: Random Resetting
+
+## NSGA-II
+The "NSGA-2.ipynb" notebook contains an implementation of the NSGA-II algorithm to solve CVRP instances and optimize multiple objectives.
+
+The "NSGA-2.ipynb" notebook is organized into multiple parts:
+1. Developing functions and testing them
+2. NSGA-II algorithm without vehicle capacity constraints
+3. NSGA-II algorithm with vehicle capacity constraints
+
+### Feasibility 
+Feasibility ensures that the load of each vehicle in one individual do not exceed capacity.
+- After randomly generating individuals, if they are not feasible, a vehicle repair function tries to repair them for a number of iterations
+- After generating offspring, if they are not feasible, the same repair function tries to repair them for a number of iterations
+- Some individuals may remain infeasible, when repair fails. In this case, the dominance method was modified following Deb et al. (2002) (doi: 10.1109/4235.996017)
+#### Dominance with Constraints.
+There are three possible cases:
+1. One solution feasible, and the other is not -> Feasible solution dominates
+2. Both solutions NOT feasible -> Solution that has a smaller constraint violation dominates
+3. Both are feasible: Use standard NSGA-II dominance. solution1 dominates Solution 2 when:
+    - It is not worse than solution2 in all objectives
+    - It is better than solution2 in at least one objective
+    
+# Experimental Setup
+Test three instance sizes: small, medium, large; with two instances for each. 
+
+For each instance size, there are three parameter scenarios.
+Small:
+- Scenario 1: Population Size = 50, Number of Generations = 50, Crossover Rate = 0.9, Mutation Rate = 0.1
+- Scenario 2: Population Size = 50, Number of Generations = 50, Crossover Rate = 0.7, Mutation Rate = 0.1
+- Scenario 3: Population Size = 50, Number of Generations = 50, Crossover Rate = 0.9, Mutation Rate = 0.3
+
+Medium:
+- Scenario 1: Population Size = 70, Number of Generations = 70, Crossover Rate = 0.9, Mutation Rate = 0.1
+- Scenario 2: Population Size = 50, Number of Generations = 70, Crossover Rate = 0.9, Mutation Rate = 0.1
+- Scenario 3: Population Size = 70, Number of Generations = 50, Crossover Rate = 0.9, Mutation Rate = 0.1
+
+Large:
+- Scenario 1: Population Size = 90, Number of Generations = 100, Crossover Rate = 0.9, Mutation Rate = 0.1
+- Scenario 2: Population Size = 100, Number of Generations = 100, Crossover Rate = 0.9, Mutation Rate = 0.1
+- Scenario 3: Population Size = 90, Number of Generations = 100, Crossover Rate = 0.9, Mutation Rate = 0.01
+
+Results are reported for 20 runs.
+
+
+
+
+# References
+K. Deb, A. Pratap, S. Agarwal and T. Meyarivan, "A fast and elitist multiobjective genetic algorithm: NSGA-II," in IEEE Transactions on Evolutionary Computation, vol. 6, no. 2, pp. 182-197, April 2002, doi: 10.1109/4235.996017.
+
