@@ -56,6 +56,7 @@ Genetic Operators: Crossover & Mutation
 Crossover: Combines two individual parents to produce offspring (Route Crossover and Vehicles Crossover)
 - Route Crossover: Partially Mapped Crossover and
 - Vehicles Crossover: Uniform Crossover
+
 Mutation: Introduces random variation within an individual (Route Mutation or Vehicles Mutation)
 - Route Mutation: Scramble Mutation 
 - Vehicles Mutation: Random Resetting
