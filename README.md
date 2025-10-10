@@ -53,6 +53,7 @@ Individual Representation:
 - Vehicles Assigned: Integer list, of the same length as "route". The element at index "i" specifies which vehicle is assigned to the customer at "route[i]"
 
 Genetic Operators: Crossover & Mutation
+
 Crossover: Combines two individual parents to produce offspring (Route Crossover and Vehicles Crossover)
 - Route Crossover: Partially Mapped Crossover and
 - Vehicles Crossover: Uniform Crossover
