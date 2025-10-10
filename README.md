@@ -12,6 +12,7 @@
    - scipy
    - copy
    - time
+
 To install the required libraries, run: pip install vrplib matplotlib numpy scipy
 
 3. To run the NSGA II algorithm, open the NSGA2.ipynb notebook. Here, you can either:
