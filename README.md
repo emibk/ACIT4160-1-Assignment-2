@@ -83,11 +83,11 @@ There are three possible cases:
     - It is not worse than solution2 in all objectives
     - It is better than solution2 in at least one objective
 ## VEGA
-The "VEGA.ipynb" notebook contains an implementation of the NSGA-II algorithm to solve CVRP instances and optimize multiple objectives.
+The "VEGA.ipynb" notebook contains an implementation of the VEGA algorithm to solve CVRP instances and optimize multiple objectives.
 
-The "NSGA-2.ipynb" notebook is organized into multiple parts:
-2. NSGA-II algorithm without vehicle capacity constraints
-3. NSGA-II algorithm with vehicle capacity constraints
+The "VEGA.ipynb" notebook is organized into multiple parts:
+2. VEGA algorithm without vehicle capacity constraints
+3. VEGA algorithm with vehicle capacity constraints
 
 ### Feasibility 
 Feasibility ensures that the load of each vehicle in one individual do not exceed capacity.
