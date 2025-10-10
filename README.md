@@ -12,6 +12,7 @@
    - scipy
    - copy
    - time
+
 To install the required libraries, run: pip install vrplib matplotlib numpy scipy
 
 3. To run the NSGA II algorithm, open the NSGA2.ipynb notebook. Here, you can either:
@@ -52,9 +53,11 @@ Individual Representation:
 - Vehicles Assigned: Integer list, of the same length as "route". The element at index "i" specifies which vehicle is assigned to the customer at "route[i]"
 
 Genetic Operators: Crossover & Mutation
+
 Crossover: Combines two individual parents to produce offspring (Route Crossover and Vehicles Crossover)
 - Route Crossover: Partially Mapped Crossover and
 - Vehicles Crossover: Uniform Crossover
+
 Mutation: Introduces random variation within an individual (Route Mutation or Vehicles Mutation)
 - Route Mutation: Scramble Mutation 
 - Vehicles Mutation: Random Resetting
@@ -80,11 +83,11 @@ There are three possible cases:
     - It is not worse than solution2 in all objectives
     - It is better than solution2 in at least one objective
 ## VEGA
-The "VEGA.ipynb" notebook contains an implementation of the NSGA-II algorithm to solve CVRP instances and optimize multiple objectives.
+The "VEGA.ipynb" notebook contains an implementation of the VEGA algorithm to solve CVRP instances and optimize multiple objectives.
 
-The "NSGA-2.ipynb" notebook is organized into multiple parts:
-2. NSGA-II algorithm without vehicle capacity constraints
-3. NSGA-II algorithm with vehicle capacity constraints
+The "VEGA.ipynb" notebook is organized into multiple parts:
+2. VEGA algorithm without vehicle capacity constraints
+3. VEGA algorithm with vehicle capacity constraints
 
 ### Feasibility 
 Feasibility ensures that the load of each vehicle in one individual do not exceed capacity.
